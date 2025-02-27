@@ -1,4 +1,12 @@
+using UserService.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+IServiceCollection serviceCollection = builder
+    .Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
 
 // Add services to the container.
 
